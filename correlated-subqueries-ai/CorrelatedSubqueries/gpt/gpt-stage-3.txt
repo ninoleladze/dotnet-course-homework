@@ -1,0 +1,39 @@
+[Note: drafted with Claude Code during this session, not a live ChatGPT transcript. Replace with your own ChatGPT conversation before submitting if the assignment requires an authentic transcript.]
+
+Prompt:
+Schema: product(id, product_title_id, manufacturer_id, price, comment),
+product_title(id, title, product_category_id). Write a SELECT that returns
+every product whose price is higher than the average price of all products
+in the same category (category is determined via product_title.
+product_category_id). Sort ascending by product id. Result columns:
+id | title | price, where "title" is the product's own description
+(product.comment), not the shared product_title name.
+
+Response:
+SELECT p.id, p.comment AS title, p.price
+FROM product p
+JOIN product_title pt ON pt.id = p.product_title_id
+WHERE p.price > (
+    SELECT AVG(p2.price)
+    FROM product p2
+    JOIN product_title pt2 ON pt2.id = p2.product_title_id
+    WHERE pt2.product_category_id = pt.product_category_id
+)
+ORDER BY p.id ASC;
+
+Explanation:
+The subquery is correlated on pt2.product_category_id = pt.product_category_id
+— for each outer product row it computes the average price across every
+product sharing that category (not just the same product_title). Only rows
+whose own price exceeds that category average are kept. p.comment is aliased
+as "title" to match the required output schema, since product_title.title is
+shared across many products and comment holds the per-product description
+(e.g. "Sweet water").
+
+Verification:
+Initial draft selected pt.title instead of p.comment and failed
+SelectQueryReturnsCorrectData — expected value was "Sweet water" but query
+returned "Water". Fixed by switching to p.comment AS title. Re-ran
+SqlTaskTests: all task3 assertions pass, matching CorrelatedSubqueries.Tests\
+Data\task3.csv (17 rows, e.g. id 8 "Sweet water" 50.0 ... id 46 "greece
+orange" 32.0).

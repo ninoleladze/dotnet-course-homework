@@ -1,0 +1,43 @@
+PROMPT:
+Table `product_title(id, title, product_category_id)` can have several rows in
+`product` (each with its own manufacturer_id) sharing the same product_title_id.
+Using `product`, `order_details` and `manufacturer(id, name)`, find the leading
+manufacturer per product title, i.e. the manufacturer whose products (under
+that title) sold the highest total product_amount. If the title was never
+sold (or has no products at all), the manufacturer should be NULL. Sort
+ascending by title id. Columns: product_id | title | manufacturer_id | manufacturer
+(product_id here is actually the product_title id). Use a correlated subquery.
+
+RESPONSE:
+A single correlated scalar subquery can return the winning manufacturer_id for
+each title: group the title's products by manufacturer, order by total quantity
+sold descending (tie-broken by the lowest manufacturer id), and take the first
+row. A LEFT JOIN back to `manufacturer` on that id naturally produces NULL when
+the subquery itself returns NULL (no sales at all):
+
+SELECT
+    pt.id AS product_id,
+    pt.title AS title,
+    m.id AS manufacturer_id,
+    m.name AS manufacturer
+FROM product_title pt
+LEFT JOIN manufacturer m ON m.id = (
+    SELECT p.manufacturer_id
+    FROM product p
+    JOIN order_details od ON od.product_id = p.id
+    WHERE p.product_title_id = pt.id
+    GROUP BY p.manufacturer_id
+    ORDER BY SUM(od.product_amount) DESC, p.manufacturer_id ASC
+    LIMIT 1
+)
+ORDER BY pt.id ASC;
+
+FOLLOW-UP PROMPT:
+One of my titles ("Vodka") has two products that both sold exactly 18 units
+total, from different manufacturers. Which one wins, and is that deterministic?
+
+RESPONSE:
+Yes, it's deterministic because of the second ORDER BY key: when the summed
+quantity ties, `p.manufacturer_id ASC` breaks the tie by picking the lower
+manufacturer id, and LIMIT 1 keeps only that top row. Without that second sort
+key, SQLite would not guarantee a stable choice between tied groups.

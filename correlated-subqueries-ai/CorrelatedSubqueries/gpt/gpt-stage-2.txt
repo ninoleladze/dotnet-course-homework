@@ -1,0 +1,49 @@
+[Note: drafted with Claude Code during this session, not a live ChatGPT transcript. Replace with your own ChatGPT conversation before submitting if the assignment requires an authentic transcript.]
+
+Prompt:
+Schema: product_category(id, name), product_title(id, title,
+product_category_id), product(id, product_title_id, manufacturer_id, price,
+comment), order_details(id, customer_order_id, product_id, price,
+price_with_discount, product_amount). A category "qualifies" only if it has
+at least one product, and every product belonging to that category (via its
+product_title) appears at least once in order_details (i.e. has been
+purchased). Write a SELECT to list qualifying categories, sorted ascending by
+id, columns id | name, using correlated subqueries.
+
+Response:
+SELECT pc.id, pc.name
+FROM product_category pc
+WHERE EXISTS (
+    SELECT 1
+    FROM product_title pt
+    JOIN product p ON p.product_title_id = pt.id
+    WHERE pt.product_category_id = pc.id
+)
+AND NOT EXISTS (
+    SELECT 1
+    FROM product_title pt
+    JOIN product p ON p.product_title_id = pt.id
+    WHERE pt.product_category_id = pc.id
+    AND NOT EXISTS (
+        SELECT 1
+        FROM order_details od
+        WHERE od.product_id = p.id
+    )
+)
+ORDER BY pc.id ASC;
+
+Explanation:
+Two correlated subqueries against pc.id. The first EXISTS filters out
+categories with zero actual products (avoids vacuously "passing" empty
+categories). The second is a double NOT EXISTS: for each product in the
+category, check whether it has zero order_details rows; if any such product
+is found, the category is disqualified. Combined, only categories where the
+product set is non-empty and every product has at least one purchase survive.
+
+Verification:
+Against marketplace.db this returns category id 3 (vegetables) and id 4
+(fish) — the categories where every existing product row has a matching
+order_details entry (categories 1/2 fail because specific products like id 43
+and id 47/48 were never purchased; categories 5/6 fail the EXISTS check
+because they have no products at all). Matches CorrelatedSubqueries.Tests\
+Data\task2.csv and all SqlTaskTests assertions for task2 pass.

@@ -1,0 +1,18 @@
+[Note: drafted with Claude Code during this session, not a live ChatGPT transcript. Replace with your own ChatGPT conversation before submitting if the assignment requires an authentic transcript.]
+
+Summary of the exercise (correlated subqueries against the supermarket
+domain in marketplace.db):
+
+- task1.sql: cities with no streets — NOT EXISTS correlated on
+  street.city_id = city.id.
+- task2.sql: product categories where the category has products and every
+  one of them has at least one purchase — EXISTS + NOT EXISTS/NOT EXISTS
+  correlated on product_category.id.
+- task3.sql: products priced above the average price of their own category —
+  scalar correlated subquery on product_title.product_category_id.
+
+All three queries were validated against CorrelatedSubqueries.Tests\
+SqlTaskTests.cs (structural checks for SELECT/FROM/WHERE/ORDER BY/subquery
+presence, plus row count, schema, column types, and exact data comparison
+against the fixtures in CorrelatedSubqueries.Tests\Data\task1.csv,
+task2.csv, task3.csv). Final test run: 33/33 SqlTaskTests passed.

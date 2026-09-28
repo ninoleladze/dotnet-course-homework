@@ -1,0 +1,70 @@
+PROMPT:
+Same database. Table `product(id, product_title_id, manufacturer_id, price, comment)`
+and `order_details(id, customer_order_id, product_id, price, price_with_discount, product_amount)`,
+plus `customer_order(id, ..., customer_id)` and `customer(person_id, card_number, discount)`.
+
+For every row in `product`, I need the quantity (sum of product_amount) sold to
+customers whose discount was more than 5%, the quantity sold to customers with
+5% or less (or no discount, including anonymous orders), and the percentage
+difference between those two quantities:
+difference = (with - without) * 100 / (with + without), or 0 if both are 0.
+Columns: id | title | count_with_discount_5 | count_without_discount_5 | difference,
+"title" being product.comment. Sort ascending by id. Use correlated subqueries.
+
+RESPONSE:
+Two correlated subqueries per product (one filtered to discount > 0.05, one to
+discount <= 0.05 or NULL) computed in an inner derived table, then a final
+SELECT computes the percentage difference from those two aliases, since SQLite
+won't let you reference a SELECT-list alias in another expression of the same
+SELECT level:
+
+SELECT
+    id,
+    title,
+    count_with_discount_5,
+    count_without_discount_5,
+    ROUND(
+        CASE
+            WHEN (count_with_discount_5 + count_without_discount_5) = 0 THEN 0.0
+            ELSE (count_with_discount_5 - count_without_discount_5) * 100.0
+                 / (count_with_discount_5 + count_without_discount_5)
+        END, 2
+    ) AS difference
+FROM (
+    SELECT
+        p.id AS id,
+        p.comment AS title,
+        COALESCE((
+            SELECT SUM(od.product_amount)
+            FROM order_details od
+            JOIN customer_order co ON co.id = od.customer_order_id
+            LEFT JOIN customer c ON c.person_id = co.customer_id
+            WHERE od.product_id = p.id
+              AND COALESCE(c.discount, 0) > 0.05
+        ), 0) AS count_with_discount_5,
+        COALESCE((
+            SELECT SUM(od.product_amount)
+            FROM order_details od
+            JOIN customer_order co ON co.id = od.customer_order_id
+            LEFT JOIN customer c ON c.person_id = co.customer_id
+            WHERE od.product_id = p.id
+              AND COALESCE(c.discount, 0) <= 0.05
+        ), 0) AS count_without_discount_5
+    FROM product p
+) t
+ORDER BY id ASC;
+
+The LEFT JOIN to `customer` (rather than an inner join) is what makes anonymous
+orders fall into the "without discount" bucket via COALESCE(c.discount, 0),
+instead of being dropped from both counts.
+
+FOLLOW-UP PROMPT:
+My unit test expects products that were never sold at all (e.g. id 46-48) to
+show 0, 0, 0.0 rather than NULL. Does the COALESCE around each subquery cover
+that?
+
+RESPONSE:
+Yes - each subquery returns NULL when there are no matching order_details rows,
+and the outer COALESCE(..., 0) turns that into 0 for both counts, which then
+makes the CASE branch on (0 + 0) = 0 return 0.0 for the difference instead of
+dividing by zero.

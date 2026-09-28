@@ -1,0 +1,28 @@
+[Note: drafted with Claude Code during this session, not a live ChatGPT transcript. Replace with your own ChatGPT conversation before submitting if the assignment requires an authentic transcript.]
+
+Prompt:
+Given a "city" table (id, name) and a "street" table (id, name, city_id) where
+street.city_id references city.id, write a SQL SELECT query to get all cities
+that have no streets. Sort the result ascending by city name. Result columns:
+id, name. Use a correlated subquery.
+
+Response:
+SELECT c.id, c.name
+FROM city c
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM street s
+    WHERE s.city_id = c.id
+)
+ORDER BY c.name ASC;
+
+Explanation:
+The subquery is correlated to the outer query through s.city_id = c.id — for
+each city row, it checks whether any street row references that city. NOT
+EXISTS keeps only cities with zero matching streets. Sorting is applied on the
+outer query by name ascending, matching the required id | name schema.
+
+Verification:
+Run against CorrelatedSubqueries.Tests\DB\marketplace.db via SqlTaskTests —
+expected result is cities id 4 (London) and 5 (Lviv), the only two cities with
+no rows in the street table. All SqlTaskTests assertions for task1 pass.

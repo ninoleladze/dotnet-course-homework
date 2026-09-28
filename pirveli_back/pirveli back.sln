@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36121.58 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pirveli back", "pirveli back\pirveli back.csproj", "{38908CFC-B514-4E37-BCF9-0B7E656CA569}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38908CFC-B514-4E37-BCF9-0B7E656CA569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38908CFC-B514-4E37-BCF9-0B7E656CA569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38908CFC-B514-4E37-BCF9-0B7E656CA569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38908CFC-B514-4E37-BCF9-0B7E656CA569}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AA90E9D-8B3B-4C79-B37A-C2185D6637E1}
+	EndGlobalSection
+EndGlobal

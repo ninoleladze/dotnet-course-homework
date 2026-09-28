@@ -1,0 +1,22 @@
+PROMPT:
+I ran all three queries above against the local NUnit test suite
+(SqlTaskTests, comparing against marketplace.db / task1-3.csv). All three
+passed on rows count, schema, column types and data. Before I finalize, can
+you double check each query actually satisfies the "contains a subquery"
+structural requirement (SELECT ... ( SELECT ... )) and not just correct
+results?
+
+RESPONSE:
+Yes:
+- task1.sql: the derived table itself is a subquery, and it contains two more
+  correlated subqueries in its SELECT list (avg_purchase, sum_purchase).
+- task2.sql: same shape - a derived table with two correlated subqueries
+  (count_with_discount_5, count_without_discount_5).
+- task3.sql: one correlated scalar subquery used directly in the LEFT JOIN's
+  ON condition (m.id = (SELECT ... LIMIT 1)).
+
+All three also keep at least one WHERE/HAVING-equivalent filter, an ORDER BY,
+and a JOIN, so they should satisfy every structural check in the test suite
+in addition to the data checks. Since all 32 tests are green, no further
+changes should be needed - just save each script to its own file under
+sql_queries/ as task1.sql, task2.sql, task3.sql.
