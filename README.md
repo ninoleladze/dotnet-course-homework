@@ -1,6 +1,6 @@
 # .NET Course Homework
 
-My coursework and practice projects from learning **C#, .NET, ASP.NET Core, Entity Framework Core, SQL and Angular** — 152 exercises in one place.
+My coursework and practice projects from learning **C#, .NET, ASP.NET Core, Entity Framework Core, SQL and Angular** — 189 exercises in one place.
 
 Bigger projects live in their own repositories (see my profile). This repository collects the lessons, homework and practice tasks.
 
@@ -14,15 +14,16 @@ Bigger projects live in their own repositories (see my profile). This repository
 - **SQL** — select, joins, grouping, aggregation, subqueries, ALTER TABLE, data insert
 - **Testing** — unit tests and mocking
 - **Frontend** — first Angular and React projects
+- **Python** — first Python practice (in `desktop-python`)
 
 ## Named exercises
 
 | Folder | Type | Framework | C# files |
 |---|---|---|---|
-| [`aspnet-core-dependency-injection`](./aspnet-core-dependency-injection) | ASP.NET Core Web API, unit tests | net8.0 | 24 |
+| [`aspnet-core-dependency-injection`](./aspnet-core-dependency-injection) | ASP.NET Core, unit tests | net8.0 | 24 |
 | [`aspnet-core-middleware`](./aspnet-core-middleware) | Console / class library, unit tests | net8.0 | 18 |
-| [`aspnet-core-routing`](./aspnet-core-routing) | ASP.NET Core Web API, unit tests | net8.0 | 25 |
-| [`asptest`](./asptest) | ASP.NET Core Web API | net8.0 | 3 |
+| [`aspnet-core-routing`](./aspnet-core-routing) | ASP.NET Core, unit tests | net8.0 | 25 |
+| [`asptest`](./asptest) | ASP.NET Core | net8.0 | 3 |
 | [`attribute-validation-service`](./attribute-validation-service) | Console / class library, unit tests | net8.0 | 13 |
 | [`back2`](./back2) | Console / class library | net8.0 | 1 |
 | [`back3davaleba`](./back3davaleba) | Console / class library | net8.0 | 1 |
@@ -51,7 +52,7 @@ Bigger projects live in their own repositories (see my profile). This repository
 | [`create-table-old-1784117511975`](./create-table-old-1784117511975) | Console / class library, unit tests, SQL | net8.0 | 27 |
 | [`data-insert`](./data-insert) | Console / class library, unit tests, SQL | net8.0 | 27 |
 | [`davalebaBack3`](./davalebaBack3) | Console / class library | net8.0 | 1 |
-| [`DebugDemo`](./DebugDemo) | ASP.NET Core Web API | net9.0 | 1 |
+| [`DebugDemo`](./DebugDemo) | ASP.NET Core | net9.0 | 1 |
 | [`dependency-injection-uri-serialization`](./dependency-injection-uri-serialization) | Console / class library, unit tests | net8.0 | 27 |
 | [`DIHM1`](./DIHM1) | Console / class library | net10.0 | 1 |
 | [`DIHM2`](./DIHM2) | Console / class library | net10.0 | 1 |
@@ -72,7 +73,7 @@ Bigger projects live in their own repositories (see my profile). This repository
 | [`LibraryApp1`](./LibraryApp1) | Console / class library, EF Core | net8.0 | 24 |
 | [`LibraryEn`](./LibraryEn) | Console / class library, EF Core | net8.0 | 9 |
 | [`LibraryEnt`](./LibraryEnt) | Console / class library, EF Core | net8.0 | 17 |
-| [`minimal-api-tutorial`](./minimal-api-tutorial) | ASP.NET Core Web API, EF Core | net8.0 | 4 |
+| [`minimal-api-tutorial`](./minimal-api-tutorial) | ASP.NET Core, EF Core | net8.0 | 4 |
 | [`mock-testing`](./mock-testing) | Console / class library, unit tests | net8.0 | 6 |
 | [`movie`](./movie) | Console / class library, EF Core | net8.0 | 7 |
 | [`nini`](./nini) | Console / class library | net8.0 | 5 |
@@ -103,12 +104,12 @@ Bigger projects live in their own repositories (see my profile). This repository
 | [`TEST_NL_1_REMAKE`](./TEST_NL_1_REMAKE) | Console / class library | net10.0 | 22 |
 | [`TN`](./TN) | Console / class library, EF Core | net8.0 | 6 |
 | [`tpl-task-statuses`](./tpl-task-statuses) | Console / class library, unit tests | net8.0 | 2 |
-| [`WebApplication1`](./WebApplication1) | ASP.NET Core Web API | net8.0 | 2 |
-| [`WebApplication2`](./WebApplication2) | ASP.NET Core Web API | net8.0 | 5 |
-| [`WebApplication3`](./WebApplication3) | ASP.NET Core Web API | net8.0 | 5 |
-| [`WebApplication4`](./WebApplication4) | ASP.NET Core Web API, EF Core | net8.0 | 12 |
-| [`WebApplication7`](./WebApplication7) | ASP.NET Core Web API, EF Core | net8.0 | 14 |
-| [`WebApplication9`](./WebApplication9) | ASP.NET Core Web API | net8.0 | 7 |
+| [`WebApplication1`](./WebApplication1) | ASP.NET Core | net8.0 | 2 |
+| [`WebApplication2`](./WebApplication2) | ASP.NET Core | net8.0 | 5 |
+| [`WebApplication3`](./WebApplication3) | ASP.NET Core | net8.0 | 5 |
+| [`WebApplication4`](./WebApplication4) | ASP.NET Core, EF Core | net8.0 | 12 |
+| [`WebApplication7`](./WebApplication7) | ASP.NET Core, EF Core | net8.0 | 14 |
+| [`WebApplication9`](./WebApplication9) | ASP.NET Core | net8.0 | 7 |
 | [`xml`](./xml) | Console / class library, unit tests | net8.0 | 15 |
 | [`xml-serialization-basics`](./xml-serialization-basics) | Console / class library, unit tests | net8.0 | 25 |
 
@@ -129,11 +130,11 @@ Folders are named by lesson date.
 | [`06.24.26_DI`](./06.24.26_DI) | Console / class library | net10.0 | 2 |
 | [`06.24.26_DI_2`](./06.24.26_DI_2) | Console / class library | net10.0 | 11 |
 | [`06.29.26_DI`](./06.29.26_DI) | Console / class library | net10.0 | 19 |
-| [`08.24.26_DI`](./08.24.26_DI) | ASP.NET Core Web API | net10.0 | 3 |
-| [`08.24.26_DI1`](./08.24.26_DI1) | ASP.NET Core Web API | net8.0 | 15 |
-| [`09.14.26_DI`](./09.14.26_DI) | ASP.NET Core Web API, EF Core | net8.0 | 27 |
+| [`08.24.26_DI`](./08.24.26_DI) | ASP.NET Core | net10.0 | 3 |
+| [`08.24.26_DI1`](./08.24.26_DI1) | ASP.NET Core | net8.0 | 15 |
+| [`09.14.26_DI`](./09.14.26_DI) | ASP.NET Core, EF Core | net8.0 | 27 |
 | [`1`](./1) | Console / class library | net8.0 | 4 |
-| [`1.10.2`](./1.10.2) | ASP.NET Core Web API, EF Core | net8.0 | 7 |
+| [`1.10.2`](./1.10.2) | ASP.NET Core, EF Core | net8.0 | 7 |
 | [`1.16`](./1.16) | Console / class library, EF Core | net8.0 | 11 |
 | [`1.20`](./1.20) | Console / class library, EF Core | net8.0 | 14 |
 | [`1.21`](./1.21) | Console / class library, EF Core | net8.0 | 17 |
@@ -151,20 +152,20 @@ Folders are named by lesson date.
 | [`12.19`](./12.19) | Console / class library, EF Core | net8.0 | 7 |
 | [`12.19_student`](./12.19_student) | Console / class library, EF Core | net8.0 | 7 |
 | [`13.07.26_DI`](./13.07.26_DI) | Console / class library | net10.0 | 1 |
-| [`2.10`](./2.10) | ASP.NET Core Web API, EF Core | net8.0 | 9 |
-| [`2.13.26`](./2.13.26) | ASP.NET Core Web API, EF Core | net8.0 | 15 |
-| [`2.14.26`](./2.14.26) | ASP.NET Core Web API, EF Core | net8.0 | 11 |
-| [`2.17.26`](./2.17.26) | ASP.NET Core Web API, EF Core | net8.0 | 13 |
-| [`2.20.26`](./2.20.26) | ASP.NET Core Web API, EF Core | net8.0 | 13 |
-| [`2.27.26`](./2.27.26) | ASP.NET Core Web API, EF Core | net8.0 | 4 |
+| [`2.10`](./2.10) | ASP.NET Core, EF Core | net8.0 | 9 |
+| [`2.13.26`](./2.13.26) | ASP.NET Core, EF Core | net8.0 | 15 |
+| [`2.14.26`](./2.14.26) | ASP.NET Core, EF Core | net8.0 | 11 |
+| [`2.17.26`](./2.17.26) | ASP.NET Core, EF Core | net8.0 | 13 |
+| [`2.20.26`](./2.20.26) | ASP.NET Core, EF Core | net8.0 | 13 |
+| [`2.27.26`](./2.27.26) | ASP.NET Core, EF Core | net8.0 | 4 |
 | [`2.27.26_Cinema`](./2.27.26_Cinema) | Console / class library, EF Core | net8.0 | 12 |
 | [`2.3.26`](./2.3.26) | Console / class library, EF Core | net8.0 | 11 |
-| [`2.8`](./2.8) | ASP.NET Core Web API | net8.0 | 3 |
+| [`2.8`](./2.8) | ASP.NET Core | net8.0 | 3 |
 | [`222back`](./222back) | Files | — | 0 |
 | [`3`](./3) | Console / class library | net8.0 | 1 |
-| [`3.10.26`](./3.10.26) | ASP.NET Core Web API, EF Core | net8.0 | 12 |
-| [`3.3.26`](./3.3.26) | ASP.NET Core Web API | net8.0 | 3 |
-| [`3.6.26`](./3.6.26) | ASP.NET Core Web API, EF Core | net8.0 | 26 |
+| [`3.10.26`](./3.10.26) | ASP.NET Core, EF Core | net8.0 | 12 |
+| [`3.3.26`](./3.3.26) | ASP.NET Core | net8.0 | 3 |
+| [`3.6.26`](./3.6.26) | ASP.NET Core, EF Core | net8.0 | 26 |
 | [`350ba`](./350ba) | Console / class library | net8.0 | 1 |
 | [`3Models`](./3Models) | Console / class library, EF Core | net8.0 | 38 |
 | [`4.1.2026_DI`](./4.1.2026_DI) | Console / class library | net10.0 | 3 |
@@ -178,6 +179,48 @@ Folders are named by lesson date.
 | [`6.17`](./6.17) | Console / class library | net8.0 | 1 |
 | [`624`](./624) | Console / class library | net8.0 | 2 |
 | [`9.23_2025`](./9.23_2025) | Console / class library | net8.0 | 1 |
+
+## More practice (from my Desktop)
+
+| Folder | Type | Framework | C# files |
+|---|---|---|---|
+| [`desktop-0`](./desktop-0) | Console / class library | net8.0 | 3 |
+| [`desktop-1028`](./desktop-1028) | Console / class library | net8.0 | 4 |
+| [`desktop-1107`](./desktop-1107) | Console / class library | net8.0 | 3 |
+| [`desktop-1221`](./desktop-1221) | Files | — | 0 |
+| [`desktop-123456789`](./desktop-123456789) | ASP.NET Core, EF Core | net8.0 | 19 |
+| [`desktop-170`](./desktop-170) | Files | — | 0 |
+| [`desktop-2`](./desktop-2) | Console / class library | net8.0 | 1 |
+| [`desktop-2.8`](./desktop-2.8) | Files | — | 0 |
+| [`desktop-3.20.26`](./desktop-3.20.26) | ASP.NET Core, EF Core | net8.0 | 29 |
+| [`desktop-322`](./desktop-322) | Console / class library | net8.0 | 8 |
+| [`desktop-4`](./desktop-4) | Console / class library | net8.0 | 4 |
+| [`desktop-9.19.2025`](./desktop-9.19.2025) | Console / class library | net8.0 | 3 |
+| [`desktop-Amazon`](./desktop-Amazon) | Console / class library, EF Core | net8.0 | 15 |
+| [`desktop-Auth1234`](./desktop-Auth1234) | ASP.NET Core, EF Core | net8.0 | 13 |
+| [`desktop-backend`](./desktop-backend) | Console / class library | net8.0 | 4 |
+| [`desktop-backhmnew1`](./desktop-backhmnew1) | Files | — | 0 |
+| [`desktop-backnew111hm`](./desktop-backnew111hm) | Console / class library | net8.0 | 4 |
+| [`desktop-backnew222hm`](./desktop-backnew222hm) | Console / class library | net8.0 | 2 |
+| [`desktop-console2`](./desktop-console2) | Console / class library | net8.0 | 3 |
+| [`desktop-ConsoleApp8`](./desktop-ConsoleApp8) | Console / class library | net8.0 | 1 |
+| [`desktop-Ebay`](./desktop-Ebay) | Console / class library, EF Core | net8.0 | 15 |
+| [`desktop-filestream`](./desktop-filestream) | Console / class library | net8.0 | 3 |
+| [`desktop-FileStream_APP`](./desktop-FileStream_APP) | Console / class library | net8.0 | 3 |
+| [`desktop-hello-world-main`](./desktop-hello-world-main) | Console / class library, unit tests | net8.0 | 2 |
+| [`desktop-Inatagram`](./desktop-Inatagram) | Console / class library, EF Core | net8.0 | 13 |
+| [`desktop-Inventory_management_system`](./desktop-Inventory_management_system) | Files | — | 0 |
+| [`desktop-Library2`](./desktop-Library2) | Console / class library | net8.0 | 3 |
+| [`desktop-LINQ-sum`](./desktop-LINQ-sum) | Console / class library | net8.0 | 4 |
+| [`desktop-LINQ_1`](./desktop-LINQ_1) | Console / class library | net8.0 | 3 |
+| [`desktop-MyFirstApp`](./desktop-MyFirstApp) | ASP.NET Core | net9.0 | 4 |
+| [`desktop-N123`](./desktop-N123) | Files | — | 0 |
+| [`desktop-PlayList`](./desktop-PlayList) | Console / class library | net8.0 | 3 |
+| [`desktop-python`](./desktop-python) | Python | — | 0 |
+| [`desktop-rem`](./desktop-rem) | ASP.NET Core | net9.0 | 2 |
+| [`desktop-SocialMedia_e`](./desktop-SocialMedia_e) | ASP.NET Core, EF Core | net8.0 | 25 |
+| [`desktop-Test`](./desktop-Test) | Angular app, Console / class library | net8.0 | 12 |
+| [`desktop-TESTING`](./desktop-TESTING) | Console / class library, EF Core | net8.0 | 3 |
 
 ## Running a project
 

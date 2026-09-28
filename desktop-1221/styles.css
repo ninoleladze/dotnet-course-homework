@@ -1,0 +1,37 @@
+.container {  
+
+    background-color: blue;
+    
+
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2.3fr 0.1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hmm hmm ok alkxda . . . . . . . . . ."
+    "good good ok alkxda . aaa aaa aaa aaa aaa aaa aaa aaa aaa"
+    "idk idk fine alkxda . . i i i i i i i i";
+
+    
+}
+
+
+.idk { grid-area: idk; }
+
+.good { grid-area: good; }
+
+.hmm { grid-area: hmm; }
+
+.ok { grid-area: ok; }
+
+.fine { grid-area: fine; }
+
+.i { grid-area: i; }
+
+.aaa { grid-area: aaa; }
+
+.alkxda { grid-area: alkxda; }
+
+
+
